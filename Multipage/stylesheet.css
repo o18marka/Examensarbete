@@ -1,0 +1,12 @@
+body{
+   overflow-x: hidden; 
+}
+
+.nav-tabs > li > a.active {
+    background-color: #ffc107 !important;
+    color: white !important;
+}
+
+.nav-tabs > li > a {
+    color: white !important;
+}
