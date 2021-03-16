@@ -44,94 +44,31 @@
         </ul>
         </div>
     </nav>
-    <?php
-        $sql = "SELECT * FROM test;";
-        $result = mysqli_query($conn, $sql);
-        $resultCheck = mysqli_num_rows($result);
-        if($resultCheck > 0){
-            while($row = mysqli_fetch_assoc($result))
-            {
-                ?>
-            
     <div class="content text-light pt-4 ml-5 mr-5">
         <div class="row">
-          <div class="col-md-4 col-sm-12 col-lg-2">
-            <div class="card bg-dark mb-3" style="max-width: 20rem;">
-              <div class="card-body">
-                <h5 class="card-title"><?php echo $row['title']; ?></h5>
-                <img class="card-img" src="images/placeholder_img.png" alt="Card image cap">
-                <p class="card-text">Short summary of produkt...</p>
+        <?php
+            $sql = "SELECT * FROM products;";
+            $result = mysqli_query($conn, $sql);
+            $resultCheck = mysqli_num_rows($result);
+            if($resultCheck > 0){
+                while($row = mysqli_fetch_assoc($result))
+                {
+                    ?>
+              <div class="col-md-4 col-sm-12 col-lg-2">
+                <div class="card bg-dark mb-3" style="max-width: 20rem;">
+                  <div class="card-body">
+                    <h5 class="card-title"><?php echo $row['Title']; ?></h5>
+                    <?php echo '<img class="card-img" src="data:image/jpeg;base64,'.base64_encode( $row['Image'] ).'"/>'; ?>
+                    <p class="card-text"><?php echo $row['Description']; ?></p>
+                  </div>
+                </div>
               </div>
-            </div>
-          </div>
-          <div class="col-md-4 col-sm-12 col-lg-2">
-            <div class="card bg-dark mb-3" style="max-width: 20rem;">
-              <div class="card-body">
-                <h5 class="card-title">Placeholder produkt</h5>
-                <img class="card-img" src="images/placeholder_img.png" alt="Card image cap">
-                <p class="card-text">Short summary of produkt...</p>
-              </div>
-            </div>
-          </div>
-            <div class="col-md-4 col-sm-12 col-lg-2">
-            <div class="card bg-dark mb-3" style="max-width: 20rem;">
-              <div class="card-body">
-                <h5 class="card-title">Placeholder produkt</h5>
-                <img class="card-img" src="images/placeholder_img.png" alt="Card image cap">
-                <p class="card-text">Short summary of produkt...</p>
-              </div>
-            </div>
-          </div>
-        <div class="col-md-4 col-sm-12 col-lg-2">
-            <div class="card bg-dark mb-3" style="max-width: 20rem;">
-              <div class="card-body">
-                <h5 class="card-title">Placeholder produkt</h5>
-                <img class="card-img" src="images/placeholder_img.png" alt="Card image cap">
-                <p class="card-text">Short summary of produkt...</p>
-              </div>
-            </div>
-          </div>
-          <div class="col-md-4 col-sm-12 col-lg-2">
-            <div class="card bg-dark mb-3" style="max-width: 20rem;">
-              <div class="card-body">
-                <h5 class="card-title">Placeholder produkt</h5>
-                <img class="card-img" src="images/placeholder_img.png" alt="Card image cap">
-                <p class="card-text">Short summary of produkt...</p>
-              </div>
-            </div>
-          </div>
-          <div class="col-md-4 col-sm-12 col-lg-2">
-            <div class="card bg-dark mb-3" style="max-width: 20rem;">
-              <div class="card-body">
-                <h5 class="card-title">Placeholder produkt</h5>
-                <img class="card-img" src="images/placeholder_img.png" alt="Card image cap">
-                <p class="card-text">Short summary of produkt...</p>
-              </div>
-            </div>
-          </div>
-          <div class="col-md-4 col-sm-12 col-lg-2">
-            <div class="card bg-dark mb-3" style="max-width: 20rem;">
-              <div class="card-body">
-                <h5 class="card-title">Placeholder produkt</h5>
-                <img class="card-img" src="images/placeholder_img.png" alt="Card image cap">
-                <p class="card-text">Short summary of produkt...</p>
-              </div>
-            </div>
-          </div>
-          <div class="col-md-4 col-sm-12 col-lg-2">
-            <div class="card bg-dark mb-3" style="max-width: 20rem;">
-              <div class="card-body">
-                <h5 class="card-title">Placeholder produkt</h5>
-                <img class="card-img" src="images/placeholder_img.png" alt="Card image cap">
-                <p class="card-text">Short summary of produkt...</p>
-              </div>
-            </div>
-          </div>
+
+        <?php
+                }
+            }
+        ?>
         </div>
     </div>
-    <?php
-            }
-        }
-    ?>
 </body>
 </html>
