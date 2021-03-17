@@ -5,11 +5,11 @@
 <!DOCTYPE html>
 <html>
 <head>
-	<title>Placeholder</title>
+	<title>Dator&Fynd - Hem</title>
 	<meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
     <meta name="viewport" content="width=device-width">
-	<link rel="shortcut icon" href="favicon.ico" type="image/ico" />
+	<link rel="shortcut icon" href="images/favicon.svg" type="image/ico" />
 
     <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
         
@@ -58,12 +58,11 @@
                 <div class="card bg-dark mb-3" style="max-width: 20rem;">
                   <div class="card-body">
                     <h5 class="card-title"><?php echo $row['Title']; ?></h5>
-                    <?php echo '<img class="card-img" src="data:image/jpeg;base64,'.base64_encode( $row['Image'] ).'"/>'; ?>
+                      <img class="card-img" src="<?php echo $row['Image']; ?>">
                     <p class="card-text"><?php echo $row['Description']; ?></p>
                   </div>
                 </div>
               </div>
-
         <?php
                 }
             }
