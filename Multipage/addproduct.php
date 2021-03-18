@@ -28,13 +28,20 @@
         <input type="text" class="form-control" name="title" placeholder="Titel">
       </div>
       <div class="form-group">
+        <label>Typ</label>
+        <select class="form-control" name="type">
+          <option value="Produkt1">Produkt 1</option>
+          <option value="Produkt2">Produkt 2</option>
+        </select>
+      </div>
+      <div class="form-group">
         <label>Produktbild</label>
         <input type="file" class="form-control-file" name="image">
       </div>
       <div class="form-group">
         <label >Beskrivning av produkt</label>
         <textarea class="form-control" name="description" placeholder="Beskrivning av produkten..."></textarea>
-        </div>
+      </div>
       <button type="submit" value="Submit" class="btn btn-primary btn-warning">Submit</button>
     </form>
 </body>

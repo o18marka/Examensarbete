@@ -37,8 +37,8 @@
         </button>
         <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
         <ul class="nav nav-tabs w-100 nav-fill bg-dark">
-            <li class="nav-item"><a class="nav-link active" href="index.php">Kategori-1</a></li>
-            <li class="nav-item"><a class="nav-link" href="produkt2.php">Kategori-2</a></li>
+            <li class="nav-item"><a class="nav-link" href="index.php">Kategori-1</a></li>
+            <li class="nav-item"><a class="nav-link active" href="">Kategori-2</a></li>
             <li class="nav-item"><a class="nav-link" href="">Kategori-3</a></li>
             <li class="nav-item"><a class="nav-link" href="">Kategori-4</a></li>
             <li class="nav-item"><a class="nav-link" href="">Kategori-5</a></li>
@@ -49,7 +49,7 @@
     <div class="content text-light pt-4 ml-5 mr-5">
         <div class="row">
         <?php
-            $sql = "SELECT * FROM products WHERE type='produkt1';";
+            $sql = "SELECT * FROM products WHERE type='produkt2';";
             $result = mysqli_query($conn, $sql);
             $resultCheck = mysqli_num_rows($result);
             if($resultCheck > 0){
