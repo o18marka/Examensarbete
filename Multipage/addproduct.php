@@ -30,8 +30,12 @@
       <div class="form-group">
         <label>Typ</label>
         <select class="form-control" name="type">
-          <option value="Produkt1">Produkt 1</option>
-          <option value="Produkt2">Produkt 2</option>
+          <option value="Grafikkort">Grafikkort</option>
+          <option value="Processor">Processor</option>
+          <option value="Moderkort">Moderkort</option>
+          <option value="Nataggregat">Nätaggregat</option>
+          <option value="Minne">Minne</option>
+          <option value="Chassi">Chassi</option>
         </select>
       </div>
       <div class="form-group">

@@ -37,10 +37,10 @@
         </button>
         <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
         <ul class="nav nav-tabs w-100 nav-fill bg-dark">
-            <li class="nav-item"><a class="nav-link active" href="index.php">Grafikkort</a></li>
+            <li class="nav-item"><a class="nav-link" href="index.php">Grafikkort</a></li>
             <li class="nav-item"><a class="nav-link" href="processorer.php">Processorer</a></li>
             <li class="nav-item"><a class="nav-link" href="moderkort.php">Moderkort</a></li>
-            <li class="nav-item"><a class="nav-link" href="nataggregat.php">Nätaggregat</a></li>
+            <li class="nav-item"><a class="nav-link active" href="nataggregat.php">Nätaggregat</a></li>
             <li class="nav-item"><a class="nav-link" href="minne.php">Minne</a></li>
             <li class="nav-item"><a class="nav-link" href="chassi.php">Chassi</a></li>
         </ul>
@@ -49,7 +49,7 @@
     <div class="content text-light pt-4 ml-5 mr-5">
         <div class="row">
         <?php
-            $sql = "SELECT * FROM products WHERE type='grafikkort';";
+            $sql = "SELECT * FROM products WHERE type='nataggregat';";
             $result = mysqli_query($conn, $sql);
             $resultCheck = mysqli_num_rows($result);
             if($resultCheck > 0){

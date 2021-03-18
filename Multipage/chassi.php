@@ -37,19 +37,19 @@
         </button>
         <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
         <ul class="nav nav-tabs w-100 nav-fill bg-dark">
-            <li class="nav-item"><a class="nav-link" href="index.php">Kategori-1</a></li>
-            <li class="nav-item"><a class="nav-link active" href="">Kategori-2</a></li>
-            <li class="nav-item"><a class="nav-link" href="">Kategori-3</a></li>
-            <li class="nav-item"><a class="nav-link" href="">Kategori-4</a></li>
-            <li class="nav-item"><a class="nav-link" href="">Kategori-5</a></li>
-            <li class="nav-item"><a class="nav-link" href="">Kategori-6</a></li>
+            <li class="nav-item"><a class="nav-link" href="index.php">Grafikkort</a></li>
+            <li class="nav-item"><a class="nav-link" href="processorer.php">Processorer</a></li>
+            <li class="nav-item"><a class="nav-link" href="moderkort.php">Moderkort</a></li>
+            <li class="nav-item"><a class="nav-link" href="nataggregat.php">Nätaggregat</a></li>
+            <li class="nav-item"><a class="nav-link" href="minne.php">Minne</a></li>
+            <li class="nav-item"><a class="nav-link active" href="chassi.php">Chassi</a></li>
         </ul>
         </div>
     </nav>
     <div class="content text-light pt-4 ml-5 mr-5">
         <div class="row">
         <?php
-            $sql = "SELECT * FROM products WHERE type='produkt2';";
+            $sql = "SELECT * FROM products WHERE type='chassi';";
             $result = mysqli_query($conn, $sql);
             $resultCheck = mysqli_num_rows($result);
             if($resultCheck > 0){
