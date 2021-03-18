@@ -10,3 +10,12 @@ body{
 .nav-tabs > li > a {
     color: white !important;
 }
+
+.pagination > li > a,
+.pagination > li > span {
+    color: green; 
+}
+
+.pagination .page-item .page-link{
+    background: black !important;
+}

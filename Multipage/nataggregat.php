@@ -22,7 +22,7 @@
     
     <nav class="navbar navbar-expand-lg navbar-dark bg-dark w-100 p-3" id="menu">   
       <form class="form-inline my-2 my-lg-0 w-100 d-flex justify-content-center">
-          <a class="navbar-brand" href="index.html"><img src="images/logo.svg" alt="Dator&Fynd" width="150px"></a>
+          <a class="navbar-brand" href="index.php"><img src="images/logo.svg" alt="Dator&Fynd" width="150px"></a>
           <div class="input-group w-50" style="min-width: 18rem;">
               <input type="search" class="form-control rounded" placeholder="Sök" aria-label="Search"
                 aria-describedby="search-addon" />
@@ -46,17 +46,29 @@
         </ul>
         </div>
     </nav>
+    
     <div class="content text-light pt-4 ml-5 mr-5">
-        <div class="row">
+        <div class="row">  
         <?php
-            $sql = "SELECT * FROM products WHERE type='nataggregat';";
-            $result = mysqli_query($conn, $sql);
-            $resultCheck = mysqli_num_rows($result);
-            if($resultCheck > 0){
-                while($row = mysqli_fetch_assoc($result))
-                {
+
+            if (isset($_GET['sidnr'])) {
+                $sidnr = $_GET['sidnr'];
+            } else {
+                $sidnr = 1;
+            }
+            $products_per_page = 12;
+            $offset = ($sidnr-1) * $products_per_page;
+
+            $pages_sql = "SELECT COUNT(*) FROM products WHERE type='nataggregat'";
+            $result = mysqli_query($conn,$pages_sql);
+            $rows = mysqli_fetch_array($result)[0];
+            $pages = ceil($rows / $products_per_page);
+
+            $sql = "SELECT * FROM products WHERE type='nataggregat' LIMIT $offset, $products_per_page";
+            $result_data = mysqli_query($conn,$sql);
+            while($row = mysqli_fetch_array($result_data)){
                     ?>
-              <div class="col-md-4 col-sm-12 col-lg-2">
+        <div class="col-md-4 col-sm-12 col-lg-2">
                 <div class="card bg-dark mb-3" style="max-width: 20rem;">
                   <div class="card-body">
                     <h5 class="card-title text-nowrap text-truncate"><?php echo $row['Title']; ?></h5>
@@ -66,10 +78,30 @@
                 </div>
               </div>
         <?php
-                }
             }
+            mysqli_close($conn);
         ?>
         </div>
+        
+        <?php
+        if($rows > $products_per_page) {
+        ?>
+            <nav>
+              <ul class="pagination pagination-lg justify-content-center fixed-bottom">
+                <li class="<?php if($sidnr <= 1){ echo 'disabled'; } ?> active"><a class="page-link bg-dark text-light border-warning" href="<?php if($sidnr <= 1){ echo '#'; } else { echo "?sidnr=".($sidnr - 1); } ?>">&laquo;</a></li>
+                  <?php
+                  for($x = 1; $x <= $pages; $x++){
+                  ?>
+                    <li class="active"><a class="page-link bg-dark text-light border-warning" href="<?php echo "?sidnr=".($x); ?>"><?php echo $x;?></a></li>
+                  <?php
+                  }
+                  ?>
+                <li class="page-item <?php if($sidnr >= $pages){ echo 'disabled'; } ?>"><a class="page-link bg-dark text-light border-warning" href="<?php if($sidnr >= $pages){ echo '#'; } else { echo "?sidnr=".($sidnr + 1); } ?>">&raquo;</a></li>
+              </ul>
+            </nav>
+        <?php
+            }
+        ?>
     </div>
 </body>
 </html>
