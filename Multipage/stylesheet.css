@@ -19,3 +19,8 @@ body{
 .pagination .page-item .page-link{
     background: black !important;
 }
+
+a.cardlink,
+a.cardlink:hover {
+  color: inherit !important;
+}

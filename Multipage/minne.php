@@ -70,11 +70,13 @@
                     ?>
         <div class="col-md-4 col-sm-12 col-lg-2">
                 <div class="card bg-dark mb-3" style="max-width: 20rem;">
-                  <div class="card-body">
-                    <h5 class="card-title text-nowrap text-truncate"><?php echo $row['Title']; ?></h5>
-                      <img class="card-img" src="<?php echo $row['Image']; ?>">
-                    <p class="card-text text-nowrap text-truncate"><?php echo $row['Description']; ?></p>
-                  </div>
+                 <?php echo '<a href="/produkt.php?ID='.$row['ID'].'" class="cardlink">' ?>
+                      <div class="card-body">
+                        <h5 class="card-title text-nowrap text-truncate"><?php echo $row['Title']; ?></h5>
+                          <img class="card-img" src="<?php echo $row['Image']; ?>">
+                        <p class="card-text text-nowrap text-truncate"><?php echo $row['Description']; ?></p>
+                      </div>
+                    </a>
                 </div>
               </div>
         <?php
