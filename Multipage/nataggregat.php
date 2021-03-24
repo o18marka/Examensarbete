@@ -29,7 +29,7 @@
               <button type="button" class="btn btn-primary btn-warning text-light">sök</button>
           </div>
       </form>
-        <button class="btn btn-primary btn-warning text-light" onclick="window.location.href='/addproduct'">Lägg till produkt</button>
+        <button class="btn btn-primary btn-warning" onclick="window.location.href='/addproduct'">Lägg till produkt</button>
     </nav> 
     <nav class="navbar nav-fill navbar-expand-lg navbar-dark bg-dark" id="menu">
         <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">

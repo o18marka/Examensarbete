@@ -31,49 +31,52 @@
 
 <body class="bg-image" style="background-image: linear-gradient(12deg, rgba(193, 193, 193,0.05) 0%, rgba(193, 193, 193,0.05) 2%,rgba(129, 129, 129,0.05) 2%, rgba(129, 129, 129,0.05) 27%,rgba(185, 185, 185,0.05) 27%, rgba(185, 185, 185,0.05) 66%,rgba(83, 83, 83,0.05) 66%, rgba(83, 83, 83,0.05) 100%),linear-gradient(321deg, rgba(240, 240, 240,0.05) 0%, rgba(240, 240, 240,0.05) 13%,rgba(231, 231, 231,0.05) 13%, rgba(231, 231, 231,0.05) 34%,rgba(139, 139, 139,0.05) 34%, rgba(139, 139, 139,0.05) 71%,rgba(112, 112, 112,0.05) 71%, rgba(112, 112, 112,0.05) 100%),linear-gradient(236deg, rgba(189, 189, 189,0.05) 0%, rgba(189, 189, 189,0.05) 47%,rgba(138, 138, 138,0.05) 47%, rgba(138, 138, 138,0.05) 58%,rgba(108, 108, 108,0.05) 58%, rgba(108, 108, 108,0.05) 85%,rgba(143, 143, 143,0.05) 85%, rgba(143, 143, 143,0.05) 100%),linear-gradient(96deg, rgba(53, 53, 53,0.05) 0%, rgba(53, 53, 53,0.05) 53%,rgba(44, 44, 44,0.05) 53%, rgba(44, 44, 44,0.05) 82%,rgba(77, 77, 77,0.05) 82%, rgba(77, 77, 77,0.05) 98%,rgba(8, 8, 8,0.05) 98%, rgba(8, 8, 8,0.05) 100%),linear-gradient(334deg, hsl(247,0%,2%),hsl(247,0%,2%)); height: 100vh" onload='CheckType(type.value)'>
 
-    <nav class="navbar navbar-expand-lg navbar-dark bg-dark w-100 p-3 mb-4" id="menu">   
-      <form class="form-inline my-2 my-lg-0 w-100 d-flex justify-content-center">
+    <nav class="navbar navbar-expand-lg navbar-dark bg-dark w-100 p-3 mb-4" id="menu">  
+        <button class="btn btn-primary btn-warning pt-0 pb-0 pl-2 pr-2" onclick="javascript:history.back()"><h2>&larr;</h2></button>
+      <div class="m-auto">
           <a class="navbar-brand" href="index.php"><img src="images/logo.svg" alt="Dator&Fynd" width="150px"></a>
-      </form>
+      </div>
     </nav> 
     
-    <form action="insert.php" method="post" class="text-light w-25 m-auto bg-dark p-5">
-      <div class="form-group ">
-        <label>Titel för produkt</label>
-        <input type="text" class="form-control" name="title" placeholder="Titel">
-      </div>
-      <div class="form-group">
-        <label>Pris</label>
-        <input type="number" class="form-control" name="pris">
-      </div>
-      <div class="form-group">
-        <label>Typ</label>
-        <select class="form-control" name="type" id="type" onchange='CheckType(this.value)'>
-          <option value="Grafikkort" selected>Grafikkort</option>
-          <option value="Processor">Processor</option>
-          <option value="Moderkort">Moderkort</option>
-          <option value="Nataggregat">Nätaggregat</option>
-          <option value="Minne">Minne</option>
-          <option value="Chassi">Chassi</option>
-        </select>
-      </div>
-      <div class="form-group" id="clockspeed">
-        <label>Clockspeed</label>
-        <input type="number" class="form-control" name="clockspeed">
-      </div>
-      <div class="form-group" id="watt">
-        <label>Watt</label>
-        <input type="number" class="form-control" name="watt">
-      </div>
-      <div class="form-group">
-        <label>Produktbild</label>
-        <input type="file" class="form-control-file" name="image">
-      </div>
-      <div class="form-group">
-        <label >Beskrivning av produkt</label>
-        <textarea class="form-control" name="description" placeholder="Beskrivning av produkten..."></textarea>
-      </div>
-      <button type="submit" value="Submit" class="btn btn-primary btn-warning">Submit</button>
-    </form>
+    <div class="row">
+        <form action="insert.php" method="post" class="text-light m-auto bg-dark p-5 col-md-8 col-lg-4">
+          <div class="form-group ">
+            <label>Titel för produkt</label>
+            <input type="text" class="form-control" name="title" placeholder="Titel">
+          </div>
+          <div class="form-group">
+            <label>Pris</label>
+            <input type="number" class="form-control" name="pris">
+          </div>
+          <div class="form-group">
+            <label>Typ</label>
+            <select class="form-control" name="type" id="type" onchange='CheckType(this.value)'>
+              <option value="Grafikkort" selected>Grafikkort</option>
+              <option value="Processor">Processor</option>
+              <option value="Moderkort">Moderkort</option>
+              <option value="Nataggregat">Nätaggregat</option>
+              <option value="Minne">Minne</option>
+              <option value="Chassi">Chassi</option>
+            </select>
+          </div>
+          <div class="form-group" id="clockspeed">
+            <label>Clockspeed</label>
+            <input type="number" class="form-control" name="clockspeed">
+          </div>
+          <div class="form-group" id="watt">
+            <label>Watt</label>
+            <input type="number" class="form-control" name="watt">
+          </div>
+          <div class="form-group">
+            <label>Produktbild</label>
+            <input type="file" class="form-control-file" name="image">
+          </div>
+          <div class="form-group">
+            <label >Beskrivning av produkt</label>
+            <textarea class="form-control" name="description" placeholder="Beskrivning av produkten..."></textarea>
+          </div>
+          <button type="submit" value="Submit" class="btn btn-primary btn-warning">Submit</button>
+        </form>
+    </div>
 </body>
 </html>
