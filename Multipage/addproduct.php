@@ -38,8 +38,9 @@
       </div>
     </nav> 
     
-    <div class="row">
-        <form action="insert.php" method="post" class="text-light m-auto bg-dark p-5 col-md-8 col-lg-4">
+
+    <div class="row w-75 m-auto">
+        <form action="insert.php" method="post" class="text-light m-auto bg-dark p-5 col-md-8 col-lg-5">
           <div class="form-group ">
             <label>Titel för produkt</label>
             <input type="text" class="form-control" name="title" placeholder="Titel">
@@ -78,5 +79,6 @@
           <button type="submit" value="Submit" class="btn btn-primary btn-warning">Submit</button>
         </form>
     </div>
+
 </body>
 </html>
