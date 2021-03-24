@@ -4,7 +4,7 @@
 <!DOCTYPE html>
 <html>
 <head>
-	<title>Dator&Fynd - Produkt</title>
+	<title>Dator&Fynd - Varukorg</title>
 	<meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
     <meta name="viewport" content="width=device-width">
@@ -27,40 +27,7 @@
     </nav> 
     
     <?php
-        $ID = $_GET['ID'];
-        $query = 'SELECT * FROM products WHERE ID = '.$ID.' LIMIT 1';
-        $result = mysqli_query($conn, $query);
-        $row = mysqli_fetch_array($result); 
+        
     ?>
-    <div class="bg-dark m-4 text-light w-75 m-auto">
-        <img class="card-img w-25 m-4 d-inline-block" src="<?php echo $row['Image']; ?>">
-        <div class="d-inline-block align-top mt-4 h-auto">
-            <h1 class="card-title"><?php echo $row['Title']; ?></h1>
-            <p class="card-text"><?php echo $row['Description']; ?></p>
-            <h2 class="card-text"><?php echo 'Pris: '.$row['Pris'].'kr'; ?></h2>
-            <table class="table table-dark mt-5" border=1>
-                <th colspan="2" class="text-center">Specs</th>
-                <?php
-                    $sql = "SELECT column_name
-                    FROM information_schema.columns
-                    WHERE  table_name = 'products'
-                    AND table_schema = 'datorochfynd' AND column_name != 'Image' AND column_name != 'Description' AND column_name != 'Pris'";
-                    $result2 = mysqli_query($conn,$sql);
-                    while($row2 = mysqli_fetch_array($result2)){
-                        if($row[$row2['column_name']] != NULL){
-                        ?>
-                            <tr>
-                                <td><?php echo $row2['column_name'].':'; ?></td>   
-                                <td><?php echo $row[$row2['column_name']]; ?></td> 
-                            </tr>
-                        <?php
-                                }
-                            }
-                        ?>
-            </table>
-        </div>
-    </div>
-    
-    
 </body>
 </html>

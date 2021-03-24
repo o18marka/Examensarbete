@@ -1,11 +1,18 @@
 <?php
     include_once 'dbh.php';
-
     $title = $_POST['title'];
     $type = $_POST['type'];
     $image_tmp = $_POST['image'];
     $description = $_POST['description'];
     $image = 'images/'.$image_tmp;
+    $pris = $_POST['pris'];
+    if(!empty($_POST['clockspeed'])) {
+       $clockspeed = $_POST['clockspeed'];
+    }
+    if(!empty($_POST['watt'])) {
+       $watt = $_POST['watt'];
+    }
+    
     if(!empty($title)|| !empty($image) || !empty($description))
     {
         if(mysqli_connect_error())
@@ -13,10 +20,10 @@
             die('error('. mysqli_connect_errno().')'. mysqli_connect_error());
         } else {
             $SELECT = "SELECT title FROM products";
-            $INSERT = "INSERT INTO products(Title, Type, Image, Description) values(?,?,?,?)";
+            $INSERT = "INSERT INTO products(Title, Type, Image, Description, Pris, Clockspeed, Watt) values(?,?,?,?,?,?,?)";
             
             $stmt = $conn->prepare($INSERT);
-            $stmt->bind_Param("ssss",$title, $type, $image, $description);
+            $stmt->bind_Param("ssssiii",$title, $type, $image, $description, $pris, $clockspeed, $watt);
             $stmt->execute();
             ?>
             <html>

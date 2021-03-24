@@ -75,6 +75,7 @@
                         <h5 class="card-title text-nowrap text-truncate"><?php echo $row['Title']; ?></h5>
                           <img class="card-img" src="<?php echo $row['Image']; ?>">
                         <p class="card-text text-nowrap text-truncate"><?php echo $row['Description']; ?></p>
+                        <p class="card-text text-nowrap text-truncate"><?php echo 'Pris: '.$row['Pris'].'kr'; ?></p>
                       </div>
                     </a>
                 </div>
