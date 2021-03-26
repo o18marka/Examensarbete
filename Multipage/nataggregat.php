@@ -1,5 +1,6 @@
 <?php
     include_once 'dbh.php';
+    session_start();
 ?>
 
 <!DOCTYPE html>
@@ -29,7 +30,7 @@
               <button type="button" class="btn btn-primary btn-warning text-light">sök</button>
           </div>
       </form>
-        <button class="btn btn-primary btn-warning" onclick="window.location.href='/addproduct'">Lägg till produkt</button>
+        <button class="btn btn-primary btn-warning" onclick="window.location.href='/varukorg.php'">Varukorg</button>
     </nav> 
     <nav class="navbar nav-fill navbar-expand-lg navbar-dark bg-dark" id="menu">
         <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
@@ -68,16 +69,19 @@
             $result_data = mysqli_query($conn,$sql);
             while($row = mysqli_fetch_array($result_data)){
                     ?>
-        <div class="col-md-4 col-sm-12 col-lg-2">
+         <div class="col-md-4 col-sm-12 col-lg-2">
                 <div class="card bg-dark mb-3" style="max-width: 20rem;">
-                  <?php echo '<a href="/produkt.php?ID='.$row['ID'].'" class="cardlink">' ?>
-                      <div class="card-body">
-                        <h5 class="card-title text-nowrap text-truncate"><?php echo $row['Title']; ?></h5>
-                          <img class="card-img" src="<?php echo $row['Image']; ?>">
-                        <p class="card-text text-nowrap text-truncate"><?php echo $row['Description']; ?></p>
-                        <p class="card-text text-nowrap text-truncate"><?php echo 'Pris: '.$row['Pris'].'kr'; ?></p>
-                      </div>
-                    </a>
+                    <div class="card-body">
+                        <?php echo '<a href="/produkt.php?ID='.$row['ID'].'" class="cardlink">' ?>
+                            <h5 class="card-title text-nowrap text-truncate"><?php echo $row['Title']; ?></h5>
+                            <img class="card-img" src="<?php echo $row['Image']; ?>">
+                            <p class="card-text text-nowrap text-truncate"><?php echo $row['Description']; ?></p>
+                            <p class="card-text text-nowrap text-truncate"><?php echo 'Pris: '.$row['Pris'].'kr'; ?></p>
+                        </a>
+                    <form method="post" action="varukorg.php?type=add&ID=<?php echo $row['ID']; ?>">
+                        <div class="w-100"><input type="submit" value="Lägg till i varukorg" class="btn btn-primary btn-warning m-1" /></div>
+                    </form>
+                    </div>
                 </div>
               </div>
         <?php

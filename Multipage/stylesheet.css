@@ -24,3 +24,11 @@ a.cardlink,
 a.cardlink:hover {
   color: inherit !important;
 }
+
+.w-15{
+    width: 15%;
+}
+
+.w-10{
+    width: 10%;
+}

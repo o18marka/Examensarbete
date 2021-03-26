@@ -1,5 +1,6 @@
 <?php
     include_once 'dbh.php';
+    session_start();
 ?>
 <!DOCTYPE html>
 <html>
@@ -40,6 +41,9 @@
             <h1 class="card-title"><?php echo $row['Title']; ?></h1>
             <p class="card-text"><?php echo $row['Description']; ?></p>
             <h2 class="card-text"><?php echo 'Pris: '.$row['Pris'].'kr'; ?></h2>
+            <form method="post" action="varukorg.php?type=add&ID=<?php echo $row['ID']; ?>">
+                <div class="w-100"><input type="submit" value="Lägg till i varukorg" class="btn btn-primary btn-warning m-1" /></div>
+            </form>
             <table class="table table-dark mt-5" border=1>
                 <th colspan="2" class="text-center">Specs</th>
                 <?php

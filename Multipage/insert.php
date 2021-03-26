@@ -7,10 +7,10 @@
     $image = 'images/'.$image_tmp;
     $pris = $_POST['pris'];
     if(!empty($_POST['clockspeed'])) {
-       $clockspeed = $_POST['clockspeed'];
+       $clockspeed = $_POST['clockspeed'].'MHz';
     }
     if(!empty($_POST['watt'])) {
-       $watt = $_POST['watt'];
+       $watt = $_POST['watt'].'MHz';
     }
     
     if(!empty($title)|| !empty($image) || !empty($description))
@@ -23,7 +23,7 @@
             $INSERT = "INSERT INTO products(Title, Type, Image, Description, Pris, Clockspeed, Watt) values(?,?,?,?,?,?,?)";
             
             $stmt = $conn->prepare($INSERT);
-            $stmt->bind_Param("ssssiii",$title, $type, $image, $description, $pris, $clockspeed, $watt);
+            $stmt->bind_Param("ssssiss",$title, $type, $image, $description, $pris, $clockspeed, $watt);
             $stmt->execute();
             ?>
             <html>
