@@ -25,9 +25,11 @@
       <form class="form-inline my-2 my-lg-0 w-100 d-flex justify-content-center">
           <a class="navbar-brand" href="index.php"><img src="images/logo.svg" alt="Dator&Fynd" width="150px"></a>
           <div class="input-group w-50" style="min-width: 18rem;">
-              <input type="search" class="form-control rounded" placeholder="Sök" aria-label="Search"
-                aria-describedby="search-addon" />
-              <button type="button" class="btn btn-primary btn-warning text-light">sök</button>
+              <form action="" method="GET">
+                  <input type="search" class="form-control rounded" placeholder="Sök" aria-label="Search"
+                    aria-describedby="search-addon" name="keyword"/>
+                  <input type="submit" class="btn btn-primary btn-warning" name="submit" value="Sök"/>
+              </form>
           </div>
       </form>
         <button class="btn btn-primary btn-warning" onclick="window.location.href='/varukorg.php'">Varukorg</button>
@@ -51,7 +53,19 @@
     <div class="content text-light pt-4 ml-5 mr-5">
         <div class="row">  
         <?php
-
+            $keyword = isset($_GET['keyword']) ? $_GET['keyword'] : '';
+            $searchstring = "SELECT * FROM products WHERE type='moderkort' AND ";
+            $displaywords = "";
+            $keywords = explode(' ', $keyword);
+            foreach ($keywords as $word){
+                $searchstring .= "Title LIKE '%".$word."%' OR ";
+                $displaywords .= $word.' ';
+            }
+            $searchstring = substr($searchstring, 0, strlen($searchstring)-4);
+            $displaywords = substr($displaywords, 0, strlen($displaywords)-1);
+            $query = mysqli_query($conn, $searchstring);
+            $resultnr = mysqli_num_rows($query);
+    
             if (isset($_GET['sidnr'])) {
                 $sidnr = $_GET['sidnr'];
             } else {
@@ -59,17 +73,13 @@
             }
             $products_per_page = 12;
             $offset = ($sidnr-1) * $products_per_page;
+            $pages = ceil($resultnr / $products_per_page);
 
-            $pages_sql = "SELECT COUNT(*) FROM products WHERE type='moderkort'";
-            $result = mysqli_query($conn,$pages_sql);
-            $rows = mysqli_fetch_array($result)[0];
-            $pages = ceil($rows / $products_per_page);
-
-            $sql = "SELECT * FROM products WHERE type='moderkort' LIMIT $offset, $products_per_page";
+            $sql = "$searchstring LIMIT $offset, $products_per_page";
             $result_data = mysqli_query($conn,$sql);
             while($row = mysqli_fetch_array($result_data)){
                     ?>
-         <div class="col-md-4 col-sm-12 col-lg-2">
+        <div class="col-md-4 col-sm-12 col-lg-2">
                 <div class="card bg-dark mb-3" style="max-width: 20rem;">
                     <div class="card-body">
                         <?php echo '<a href="/produkt.php?ID='.$row['ID'].'" class="cardlink">' ?>
@@ -91,7 +101,11 @@
         </div>
         
         <?php
-        if($rows > $products_per_page) {
+        if(isset($_GET['submit'])){
+            echo '<div class="text-center"><b><u>'.number_format($resultnr).'</u></b>&nbspresultat hittades';
+            echo '&nbspför sökordet&nbsp<i>"'.$displaywords.'"</i></div>';
+        }
+        if($resultnr > $products_per_page) {
         ?>
             <nav>
               <ul class="pagination pagination-lg justify-content-center fixed-bottom">

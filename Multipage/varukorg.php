@@ -49,10 +49,10 @@
         }
     ?>
     <nav class="navbar navbar-expand-lg navbar-dark bg-dark w-100 p-3 mb-4" id="menu">  
-        <button class="btn btn-primary btn-warning pt-0 pb-0 pl-2 pr-2" onclick="window.location.href='/index.php'"><h1>&larr;</h1></button>
-      <form class="form-inline my-2 my-lg-0 w-100 d-flex justify-content-center">
+        <button class="btn btn-primary btn-warning pt-0 pb-0 pl-2 pr-2" onclick="window.location.href='/index.php'"><h2>&larr;</h2></button>
+      <div class="m-auto">
           <a class="navbar-brand" href="index.php"><img src="images/logo.svg" alt="Dator&Fynd" width="150px"></a>
-      </form>
+      </div>
     </nav> 
     
     <div class="align-top mt-4 col-md-8 m-auto">
@@ -71,7 +71,7 @@
                 $pricetotal += ($item["Price"]);
                 ?>
                 <tr>
-                    <td><img src="<?php echo $item["Image"]; ?>" class="w-10" /><?php echo " ".$item["Title"]; ?></td>
+                    <td><img src="<?php echo $item["Image"]; ?>" class="w-20" /><?php echo " ".$item["Title"]; ?></td>
                     <td style="text-align:left;"><?php echo $item["Type"]; ?></td>
                     <td><?php echo $item["ID"]; ?></td>
                     <td style="text-align:right;"><?php echo $item["Price"]." kr"; ?></td>
