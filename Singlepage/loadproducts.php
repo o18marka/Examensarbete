@@ -1,13 +1,25 @@
 <script>
-        $(document).ready(function() {
-            $("a.cardlink").click(function() {
-                var ID=this.name;
-              $("#content").load("productdetails.php", {
-                  productID: ID
-              });
-           });
-        });
-    </script>
+    $(document).ready(function() {
+        $("a.cardlink").click(function() {
+            var ID=this.name;
+          $("#content").load("productdetails.php", {
+              productID: ID
+          });
+       });
+    });
+    
+    $(document).ready(function() {
+        $("button.varukorg").click(function() {
+            var ID=this.name;
+            var submittype="add";
+            $("a").removeClass("active");
+          $("#content").load("varukorg.php", {
+              productID: ID,
+              type: submittype
+          });
+       });
+    });
+</script>
 
 <?php
     include_once 'dbh.php';
@@ -49,9 +61,7 @@
                     <p class="card-text text-nowrap text-truncate"><?php echo $row['Description']; ?></p>
                     <p class="card-text text-nowrap text-truncate"><?php echo 'Pris: '.$row['Pris'].'kr'; ?></p>
                 </a>
-                <form method="post" action="varukorg.php?type=add&ID=<?php echo $row['ID']; ?>">
-                    <div class="w-100"><input type="submit" value="Lägg till i varukorg" class="btn btn-primary btn-warning m-1" /></div>
-                </form>
+                <button class="btn btn-primary btn-warning varukorg" name="<?php echo $row['ID']; ?>">Lägg till i varukorg</button>
             </div>
         </div>
     </div>

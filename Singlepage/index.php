@@ -30,6 +30,13 @@
               });
            });
         });
+        
+        $(document).ready(function() {
+            $("button.varukorg").click(function() {
+              $("#content").load("varukorg.php", {
+              });
+           });
+        });
     </script>
 </head>
 
@@ -46,7 +53,7 @@
               </form>
           </div>
       </form>
-        <button class="btn btn-primary btn-warning" onclick="window.location.href='varukorg.php'">Varukorg</button>
+        <button class="btn btn-primary btn-warning varukorg">Varukorg</button>
     </nav> 
     <nav class="navbar nav-fill navbar-expand-lg navbar-dark bg-dark" id="menu">
         <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
