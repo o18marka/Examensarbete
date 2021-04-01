@@ -36,3 +36,7 @@ a.cardlink:hover {
 .w-10{
     width: 10%;
 }
+
+a{
+    cursor: pointer;
+}

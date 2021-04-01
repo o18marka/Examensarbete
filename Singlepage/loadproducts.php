@@ -1,3 +1,14 @@
+<script>
+        $(document).ready(function() {
+            $("a.cardlink").click(function() {
+                var ID=this.name;
+              $("#content").load("productdetails.php", {
+                  productID: ID
+              });
+           });
+        });
+    </script>
+
 <?php
     include_once 'dbh.php';
     session_start();
@@ -26,13 +37,13 @@
 
     $sql = "$searchstring LIMIT $offset, $products_per_page";
     $result_data = mysqli_query($conn,$sql);
-    echo '<div class="row">'; 
+    echo '<div class="row" id="content">'; 
     while($row = mysqli_fetch_array($result_data)){
 ?>
     <div class="col-md-4 col-sm-12 col-lg-2">
             <div class="card bg-dark mb-3" style="max-width: 20rem;">
                 <div class="card-body">
-                <?php echo '<a href="produkt.php?ID='.$row['ID'].'" class="cardlink">' ?>
+                <?php echo '<a class="cardlink" name='.$row['ID'].'>' ?>
                     <h5 class="card-title text-nowrap text-truncate"><?php echo $row['Title']; ?></h5>
                     <img class="card-img" src="<?php echo $row['Image']; ?>">
                     <p class="card-text text-nowrap text-truncate"><?php echo $row['Description']; ?></p>
