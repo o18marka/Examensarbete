@@ -21,24 +21,42 @@
     
     <script>
         $(document).ready(function() {
+            var type='Grafikkort';
+            $("#grafikkort").addClass("active");
+            $("#content").load("loadproducts.php", {
+                producttype: type
+            });
             $("a").click(function() {
                 var type=this.name;
                 $("a").removeClass("active");
                 this.classList.add("active");
+                $("#keyword").val("");
+                $("#producttype").val(type);
                 $("#content").load("loadproducts.php", {
                 producttype: type
             });
+                
         });
-
-
 
         $("button.varukorg").click(function() {
                 $("#content").load("varukorg.php", {
             });
         });
-
         
-    
+        $("#keyword").keyup(function() {
+            var type = $('#producttype').val();
+            var keyword = $("#keyword").val();
+            $.ajax({
+             url: 'loadproducts.php',
+             type: 'POST',
+             data: { keyword: keyword, producttype: type },
+             success: function(data){
+                 if(data != ''){							 
+                     $('#content').empty().append(data);
+                 }
+             }
+         }); 
+        });
      });
         
     </script>
@@ -50,10 +68,8 @@
       <form class="form-inline my-2 my-lg-0 w-100 d-flex justify-content-center">
           <a class="navbar-brand" href="index.php"><img src="images/logo.svg" alt="Dator&Fynd" width="150px"></a>
           <div class="input-group w-50" style="min-width: 18rem;">
-              <form action="" method="GET">
-                  <input type="search" class="form-control rounded" placeholder="Sök" aria-label="Search"
-                    aria-describedby="search-addon" name="keyword"/>
-                  <input type="submit" class="btn btn-primary btn-warning" name="submit" value="Sök"/>
+             <form>
+                  <input type="text" class="form-control rounded" placeholder="Sök" aria-label="Search" aria-describedby="search-addon" id="keyword"/>
               </form>
           </div>
       </form>
@@ -65,7 +81,7 @@
         </button>
         <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
         <ul class="nav nav-tabs w-100 nav-fill bg-dark">
-            <li class="nav-item"><a class="nav-link" name="Grafikkort">Grafikkort</a></li>
+            <li class="nav-item"><a class="nav-link" name="Grafikkort" id="grafikkort">Grafikkort</a></li>
             <li class="nav-item"><a class="nav-link" name="Processor">Processorer</a></li>
             <li class="nav-item"><a class="nav-link" name="Moderkort">Moderkort</a></li>
             <li class="nav-item"><a class="nav-link" name="Nataggregat">Nätaggregat</a></li>

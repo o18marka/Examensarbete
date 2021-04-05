@@ -79,7 +79,7 @@
          data: { sidnr: Page, producttype: type },
          success: function(data){
              if(data != ''){							 
-                 $('#content').empty().append(data),
+                 $('#content').empty().append(data);
                  $('#sidnr').val(Page);
                  $('#'+Page).removeClass("bg-dark");
                  $('#'+Page).addClass("bg-warning");
@@ -100,8 +100,12 @@
     include_once 'dbh.php';
     session_start();
     $type = $_POST['producttype']; 
-    $keyword = isset($_GET['keyword']) ? $_GET['keyword'] : '';
-    $searchstring = "SELECT * FROM products WHERE type='$type' AND ";
+    $keyword = isset($_POST['keyword']) ? $_POST['keyword'] : '';
+    if($type!='type'){
+        $searchstring = "SELECT * FROM products WHERE type='$type' AND ";
+    } else {
+        $searchstring = "SELECT * FROM products WHERE type=type AND ";
+    }
     $displaywords = "";
     $keywords = explode(' ', $keyword);
     foreach ($keywords as $word){
@@ -112,13 +116,12 @@
     $displaywords = substr($displaywords, 0, strlen($displaywords)-1);
     $query = mysqli_query($conn, $searchstring);
     $resultnr = mysqli_num_rows($query);
-
     if (isset($_POST['sidnr'])) {
         $sidnr = $_POST['sidnr'];
     } else {
         $sidnr = 1;
     }
-    $products_per_page = 2;
+    $products_per_page = 12;
     $offset = ($sidnr-1) * $products_per_page;
     $pages = ceil($resultnr / $products_per_page);
 
@@ -150,7 +153,7 @@
 <input type="hidden" id="totalpagenr" value="<?php echo $pages ?>"/>
 <input type="hidden" id="producttype" value="<?php echo $type ?>">
 <?php
-    if(isset($_GET['submit'])){
+    if(isset($_POST['submit'])){
         echo '<div class="text-center"><b><u>'.number_format($resultnr).'</u></b>&nbspresultat hittades';
         echo '&nbspför sökordet&nbsp<i>"'.$displaywords.'"</i></div>';
     }
