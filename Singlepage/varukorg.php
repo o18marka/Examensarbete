@@ -15,31 +15,32 @@
     include_once 'dbh.php';
     session_start();
     $pricetotal = 0;
-    if(isset($_POST["productID"])){
+    if(isset($_POST["productID"]) && $_POST["productID"] != ""){
         $ID = $_POST["productID"];
         $productbyid = "SELECT * FROM products WHERE ID=$ID";
         $result = mysqli_query($conn,$productbyid);
         $product=mysqli_fetch_array ($result);
         $cartitems = array($product["ID"]=>array('Title'=>$product["Title"], 'ID'=>$product["ID"], 'Price'=>$product["Pris"], 'Image'=>$product["Image"], 'Type'=>$product["Type"]));
-    }
-
-    if(isset($_POST["type"]) && $_POST["type"]=="add"){
+        
+        if(isset($_POST["type"]) && $_POST["type"]=="add"){
         if(!empty($_SESSION["cartitem"])) {
                 $_SESSION["cartitem"] = array_merge($_SESSION["cartitem"],$cartitems);
             } else {
                 $_SESSION["cartitem"] = $cartitems;
+            }
         }
-    }
-    if(isset($_POST["type"]) && $_POST["type"]=="remove"){
-        if(!empty($_SESSION["cartitem"])) {
-            foreach($_SESSION["cartitem"] as $k => $v) {
-                if($v['ID'] == $_POST["productID"]){
-                    unset($_SESSION["cartitem"][$k]);
-                    break;
+        if(isset($_POST["type"]) && $_POST["type"]=="remove"){
+            if(!empty($_SESSION["cartitem"])) {
+                foreach($_SESSION["cartitem"] as $k => $v) {
+                    if($v['ID'] == $_POST["productID"]){
+                        unset($_SESSION["cartitem"][$k]);
+                        break;
+                    }
                 }
             }
         }
     }
+
 ?>
 
 <div class="align-top mt-4 col-md-8 m-auto">

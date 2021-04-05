@@ -25,18 +25,22 @@
                 var type=this.name;
                 $("a").removeClass("active");
                 this.classList.add("active");
-              $("#content").load("loadproducts.php", {
-                  producttype: type
-              });
-           });
+                $("#content").load("loadproducts.php", {
+                producttype: type
+            });
         });
+
+
+
+        $("button.varukorg").click(function() {
+                $("#content").load("varukorg.php", {
+            });
+        });
+
         
-        $(document).ready(function() {
-            $("button.varukorg").click(function() {
-              $("#content").load("varukorg.php", {
-              });
-           });
-        });
+    
+     });
+        
     </script>
 </head>
 
@@ -73,5 +77,7 @@
     
     <div class="text-light pt-4 ml-5 mr-5" id="content">
     </div>
+   
+    
 </body>
 </html>
