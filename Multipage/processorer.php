@@ -32,7 +32,7 @@
               </form>
           </div>
       </form>
-        <button class="btn btn-primary btn-warning" onclick="window.location.href='/varukorg.php'">Varukorg</button>
+        <button class="btn btn-primary btn-warning" onclick="window.location.href='varukorg.php'">Varukorg</button>
     </nav> 
     <nav class="navbar nav-fill navbar-expand-lg navbar-dark bg-dark" id="menu">
         <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
@@ -82,7 +82,7 @@
         <div class="col-md-4 col-sm-12 col-lg-2">
                 <div class="card bg-dark mb-3" style="max-width: 20rem;">
                     <div class="card-body">
-                        <?php echo '<a href="/produkt.php?ID='.$row['ID'].'" class="cardlink">' ?>
+                        <?php echo '<a href="produkt.php?ID='.$row['ID'].'" class="cardlink">' ?>
                             <h5 class="card-title text-nowrap text-truncate"><?php echo $row['Title']; ?></h5>
                             <img class="card-img" src="<?php echo $row['Image']; ?>">
                             <p class="card-text text-nowrap text-truncate"><?php echo $row['Description']; ?></p>

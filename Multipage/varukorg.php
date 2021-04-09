@@ -49,7 +49,7 @@
         }
     ?>
     <nav class="navbar navbar-expand-lg navbar-dark bg-dark w-100 p-3 mb-4" id="menu">  
-        <button class="btn btn-primary btn-warning pt-0 pb-0 pl-2 pr-2" onclick="window.location.href='/index.php'"><h2>&larr;</h2></button>
+        <button class="btn btn-primary btn-warning pt-0 pb-0 pl-2 pr-2" onclick="window.location.href='index.php'"><h2>&larr;</h2></button>
       <div class="m-auto">
           <a class="navbar-brand" href="index.php"><img src="images/logo.svg" alt="Dator&Fynd" width="150px"></a>
       </div>
@@ -75,7 +75,7 @@
                     <td style="text-align:left;"><?php echo $item["Type"]; ?></td>
                     <td><?php echo $item["ID"]; ?></td>
                     <td style="text-align:right;"><?php echo $item["Price"]." kr"; ?></td>
-                    <td style="text-align:center;"> <button class="btn btn-primary btn-warning pt-0 pb-0 pl-2 pr-2" onclick="window.location.href='/varukorg.php?type=remove&ID=<?php echo $item["ID"]; ?>'">X</button></td>
+                    <td style="text-align:center;"> <button class="btn btn-primary btn-warning pt-0 pb-0 pl-2 pr-2" onclick="window.location.href='varukorg.php?type=remove&ID=<?php echo $item["ID"]; ?>'">X</button></td>
                 </tr>
             <?php
             }

@@ -43,11 +43,11 @@
         <form action="insert.php" method="post" class="text-light m-auto bg-dark p-5 col-md-8 col-lg-5">
           <div class="form-group ">
             <label>Titel för produkt</label>
-            <input type="text" class="form-control" name="title" placeholder="Titel">
+            <input type="text" class="form-control" name="title" placeholder="Titel" id="title">
           </div>
           <div class="form-group">
             <label>Pris</label>
-            <input type="number" class="form-control" name="pris">
+            <input type="number" class="form-control" name="pris" id="price">
           </div>
           <div class="form-group">
             <label>Typ</label>
@@ -60,23 +60,23 @@
               <option value="Chassi">Chassi</option>
             </select>
           </div>
-          <div class="form-group" id="clockspeed">
+          <div class="form-group">
             <label>Clockspeed</label>
-            <input type="number" class="form-control" name="clockspeed">
+            <input id="clockspeed" type="number" class="form-control" name="clockspeed">
           </div>
           <div class="form-group" id="watt">
             <label>Watt</label>
             <input type="number" class="form-control" name="watt">
           </div>
-          <div class="form-group">
+          <div class="form-group" id="image">
             <label>Produktbild</label>
             <input type="file" class="form-control-file" name="image">
           </div>
           <div class="form-group">
             <label >Beskrivning av produkt</label>
-            <textarea class="form-control" name="description" placeholder="Beskrivning av produkten..."></textarea>
+            <textarea id="description" class="form-control" name="description" placeholder="Beskrivning av produkten..."></textarea>
           </div>
-          <button type="submit" value="Submit" class="btn btn-primary btn-warning">Submit</button>
+          <button type="submit" value="Submit" class="btn btn-primary btn-warning" id="submit">Submit</button>
         </form>
     </div>
 

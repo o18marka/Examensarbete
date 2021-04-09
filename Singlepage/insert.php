@@ -50,8 +50,8 @@
                     <div class="text-light p-4 m-auto bg-dark text-center w-25">
                         <h1 class="pb-3">Ny produkt tillagd!</h1>
                         <div>
-                            <button class="btn btn-primary btn-warning text-light" onclick="window.location.href='/addproduct'">Lägg till en ny produkt</button>
-                            <button class="btn btn-primary btn-warning text-light" onclick="window.location.href='/index.php'">Återgå hem</button>
+                            <button class="btn btn-primary btn-warning text-light" onclick="window.location.href='addproduct.php'">Lägg till en ny produkt</button>
+                            <button class="btn btn-primary btn-warning text-light" onclick="window.location.href='index.php'">Återgå hem</button>
                         </div>
                     </div>
                 </body>
