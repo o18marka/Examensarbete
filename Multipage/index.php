@@ -110,10 +110,12 @@
               <ul class="pagination pagination-lg justify-content-center fixed-bottom">
                 <li class="<?php if($sidnr <= 1){ echo 'disabled'; } ?> active"><a class="page-link bg-dark text-light border-warning" href="<?php if($sidnr <= 1){ echo '#'; } else { echo "?sidnr=".($sidnr - 1); } ?>">&laquo;</a></li>
                   <?php
-                  for($x = 1; $x <= $pages; $x++){
+                  for($x = ($sidnr - 1); $x <= ($sidnr + 1); $x++){
+                      if($x>0 && $x<=$pages){
                   ?>
-                    <li class="active"><a class="page-link bg-dark text-light border-warning" href="<?php echo "?sidnr=".($x); ?>"><?php echo $x;?></a></li>
+                    <li><a class="page-link bg-dark text-light border-warning" href="<?php echo "?sidnr=".($x); ?>"><?php echo $x;?></a></li>
                   <?php
+                      }
                   }
                   ?>
                 <li class="page-item <?php if($sidnr >= $pages){ echo 'disabled'; } ?>"><a class="page-link bg-dark text-light border-warning" href="<?php if($sidnr >= $pages){ echo '#'; } else { echo "?sidnr=".($sidnr + 1); } ?>">&raquo;</a></li>

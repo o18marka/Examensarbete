@@ -163,10 +163,12 @@
           <ul class="pagination pagination-lg justify-content-center fixed-bottom">
             <li><a class="page-link bg-dark text-light border-warning" id="backward">&laquo;</a></li>
                <?php
-                  for($x = 1; $x <= $pages; $x++){
+                  for($x = ($sidnr - 1); $x <= ($sidnr + 1); $x++){
+                      if($x>0 && $x<=$pages){
                   ?>
-                    <li><a class="page-link bg-dark text-light border-warning pagenumbernav" id="<?php echo $x;?>"><?php echo $x;?></a></li>
+                        <li><a class="page-link bg-dark text-light border-warning pagenumbernav" id="<?php echo $x;?>"><?php echo $x;?></a></li>
                   <?php
+                          }
                   }
                   ?>
             <li><a class="page-link bg-dark text-light border-warning" id="forward">&raquo;</a></li>
