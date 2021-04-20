@@ -30,11 +30,13 @@
               anchor.click();
         }
         
-        let iterations=7;
+        let iterations=10;
         function testmeasure(){
+            let now = new Date().getTime();
+             if ('performance' in window && 'timing' in window.performance) {
             setTimeout(function() {
-                var t = performance.timing;
-                var delta = t.loadEventEnd - t.responseEnd;
+                
+                var delta = now - performance.timing.navigationStart;
                 cnt=parseInt(localStorage.getItem("Counter"));
 
           if(cnt>iterations){
@@ -60,7 +62,7 @@
 
             }, 1000);       
         }
-    
+        }
         
     </script>
 </head>
@@ -117,7 +119,7 @@
             } else {
                 $sidnr = 1;
             }
-            $products_per_page = 12;
+            $products_per_page = 10;
             $offset = ($sidnr-1) * $products_per_page;
             $pages = ceil($resultnr / $products_per_page);
 

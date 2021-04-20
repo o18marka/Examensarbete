@@ -61,9 +61,10 @@
              },
              complete: function(data){   
                     cnt=parseInt(localStorage.getItem("Loops"));
-                    if(cnt>7){
+                    if(cnt>10){
                           alert("Klar!"+cnt);
                           getData();
+                          localStorage.clear();
                       }else{
                           if(isNaN(cnt)) cnt=0;
                           
@@ -159,7 +160,7 @@
     } else {
         $sidnr = 1;
     }
-    $products_per_page = 12;
+    $products_per_page = 10;
     $offset = ($sidnr-1) * $products_per_page;
     $pages = ceil($resultnr / $products_per_page);
 
